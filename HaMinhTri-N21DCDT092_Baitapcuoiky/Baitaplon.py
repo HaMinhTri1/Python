@@ -73,15 +73,18 @@ class Dictionary:
             node = node.left
         return node
     def naptutaptin(self,node):
-        fout = open('N21DCDT092_BST.txt')
-        for i in fout:
-            i = i.strip()
-            if i.startswith(node):
-                nghia = fout.readline().strip()
-                loaitu = fout.readline().strip()
-                viDu = fout.readline().strip() 
-                print(i)
-                Dictionary.insert(node,i,nghia,loaitu,viDu)
+        global tutaptin,nghiataptin,loaitutaptin,viDutaptin
+        fhand = open('N21DCDT092_BST.txt',encoding='utf8')
+        list_ =  fhand.readlines()
+        for i in range(len(list_)):
+           list_[i] = list_[i].rstrip("\n")
+        value = node
+        index = list_.index(value)
+        tutaptin = list_[index]
+        nghiataptin = list_[index+1]
+        loaitutaptin = list_[index+2]
+        viDutaptin = list_[index+3]
+        Dictionary.insert(self,tutaptin,nghiataptin,loaitutaptin,viDutaptin)
                     
 def tao_menu():
     print("\n============== MENU ==============")
